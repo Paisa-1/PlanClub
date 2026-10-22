@@ -1,0 +1,196 @@
+/* ============================================================
+   1. VARIABLES DE DISEÑO (CRYSTAL CLEAR & CHAMPAGNE)
+   ============================================================ */
+:root {
+    --neon-cyan: #00f3ff;
+    --champagne-main: #f3e5ab;
+    --champagne-bright: #ffffff;
+    --champagne-dark: #b89b5e;
+    --gold-gradient: linear-gradient(45deg, #c8a74d, #f5d76e);
+    
+    --crystal-clear: rgba(255, 255, 255, 0.02);
+    --crystal-hover: rgba(255, 255, 255, 0.12);
+    --crystal-border: rgba(255, 255, 255, 0.3);
+}
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Lexend', sans-serif;
+}
+
+/* ============================================================
+   2. CUERPO
+   ============================================================ */
+body {
+    margin: 0;
+    color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start; 
+    align-items: center;
+    text-align: center;
+    background: linear-gradient(rgba(0, 0, 0, 0.6), rgba(0, 0, 0, 0.8)), url("../img/fondo.png");
+    background-size: cover;
+    background-position: center;
+    background-attachment: fixed;
+    min-height: 100vh;
+    overflow-x: hidden;
+    padding-top: 40px;
+}
+
+/* ============================================================
+   3. LOGO
+   ============================================================ */
+.logo {
+    font-size: 4.5rem; 
+    font-weight: 900;
+    letter-spacing: 1px; 
+    text-transform: uppercase;
+    margin-bottom: 35px; 
+
+    background: linear-gradient(to right, 
+        var(--champagne-dark) 0%, 
+        var(--champagne-main) 25%, 
+        var(--champagne-bright) 50%, 
+        var(--champagne-main) 75%, 
+        var(--champagne-dark) 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    filter: drop-shadow(0 0 15px rgba(255, 255, 255, 0.25)); 
+    transition: background-position 0.6s ease, filter 0.4s ease;
+    animation: entradaSuaveLogo 0.8s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+}
+
+.logo span {
+    display: block;
+    font-size: 1.1rem; 
+    letter-spacing: 12px; 
+    text-indent: 12px; 
+    color: #aaaaaa;
+    font-weight: 400; 
+    margin-top: 5px; 
+    -webkit-text-fill-color: #aaaaaa; 
+    background: none;
+}
+
+.logo:hover { 
+    background-position: right center; 
+    filter: drop-shadow(0 0 20px rgba(255, 255, 255, 0.5));
+}
+
+.menu-list {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 100%;
+}
+
+/* ============================================================
+   4. BOTONES
+   ============================================================ */
+.btn {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-decoration: none;
+    width: 250px;
+    padding: 18px;
+    margin: 12px;
+    font-weight: bold;
+    font-size: 16px;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    cursor: pointer;
+    border-radius: 20px; 
+    color: #ffffff;
+    text-shadow: 0 1px 3px rgba(0, 0, 0, 0.6);
+
+    background: var(--crystal-clear);
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    border: 1px solid var(--crystal-border);
+    box-shadow: inset 0 1px 2px rgba(255, 255, 255, 0.25),
+                0 4px 15px rgba(0, 0, 0, 0.2);
+
+    transition: all 0.3s ease-in-out;
+    animation: entradaCascadaLimpia 0.5s ease-out forwards;
+    opacity: 0; 
+}
+
+/* Delays en cascada — 6 botones (5 normales + admin) */
+.btn:nth-child(1) { animation-delay: 0.30s; }
+.btn:nth-child(2) { animation-delay: 0.45s; }
+.btn:nth-child(3) { animation-delay: 0.60s; }
+.btn:nth-child(4) { animation-delay: 0.75s; }
+.btn:nth-child(5) { animation-delay: 0.90s; }
+.btn:nth-child(6) { animation-delay: 1.05s; }
+
+.btn:hover {
+    transform: scale(1.05);
+    background: var(--crystal-hover); 
+    border-color: rgba(255, 255, 255, 0.6);
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.4),
+                0 0 25px rgba(255, 255, 255, 0.15);
+}
+
+.btn:active {
+    transform: scale(0.98);
+}
+
+/* ============================================================
+   5. BOTÓN ADMIN (solo visible para rol R3)
+   ============================================================ */
+.btn-admin {
+    border-color: rgba(200, 167, 77, 0.5);
+    color: #f3e5ab;
+    text-shadow: 0 0 8px rgba(200, 167, 77, 0.3);
+}
+
+.btn-admin:hover {
+    background: rgba(200, 167, 77, 0.12) !important;
+    border-color: rgba(200, 167, 77, 0.85) !important;
+    box-shadow: inset 0 1px 3px rgba(255, 255, 255, 0.2),
+                0 0 22px rgba(200, 167, 77, 0.25) !important;
+    color: #f3e5ab !important;
+}
+
+/* ============================================================
+   6. KEYFRAMES
+   ============================================================ */
+@keyframes entradaCascadaLimpia {
+    0%   { opacity: 0; }
+    100% { opacity: 1; }
+}
+
+@keyframes entradaSuaveLogo {
+    0% {
+        opacity: 0;
+        transform: scale(0.5);
+    }
+    70% {
+        transform: scale(1.05);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@keyframes popEntradaBotones {
+    0% {
+        opacity: 0;
+        transform: scale(0.6);
+    }
+    100% {
+        opacity: 1;
+        transform: scale(1);
+    }
+}
+
+@media (max-width: 400px) {
+    .logo { font-size: 3.5rem; }
+}
